@@ -1,0 +1,116 @@
+@import '../../../../sass/settings/_variables.scss';
+.navigationShop {
+    position: sticky;
+    height: 100vh;
+    width: 20%;
+    top: 0;
+    padding: 2rem 0;
+    /* Drop Items */
+    &__dropItems {
+        transition: 300ms ease;
+    }
+    &__dropItems-checkbox {
+        width: 1.5rem;
+        height: 1.5rem;
+        border-radius: 0.3rem;
+        border: 0.1rem solid $border;
+        margin-right: 0.8rem;
+        &.activeCheckbox {
+            border: 0.1rem solid $secondary-color;
+            background-color: $secondary-color;
+        }
+    }
+    &__dropButton {
+        width: 100%;
+        padding: 1rem;
+        color: $secondary-color;
+        font-weight: bold;
+        outline: none;
+        background: none;
+        border-top: 1px solid $border;
+        border-bottom: 1px solid $border;
+        font-size: 1.6rem;
+        z-index: 9;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        &.dropButtonBg {
+            background-color: rgb(247, 247, 247);
+        }
+    }
+    &__dropButton-arrow {
+        font-size: 2rem;
+        transition: all 300ms ease;
+        .navigationShop__dropButton.dropButtonBg & {
+            transform: rotate(180deg);
+        }
+    }
+    &__dropItems-body {
+        overflow: hidden;
+        opacity: 0;
+        height: 0;
+        border-bottom: 1px solid $border;
+        padding: 0 1rem 1rem 1rem;
+        transition: 100ms ease-in-out;
+        &.activeBodyHeight {
+            height: auto;
+            opacity: 1;
+            transition: 300ms ease-in-out;
+            padding-top: 1rem;
+        }
+    }
+    &__dropItems-body-item {
+        width: 100%;
+        position: relative;
+        padding: 1rem 0 1rem 0;
+    }
+    &__dropItems-checkbox-name {
+        color: $primary-color;
+        font-size: 1.7rem;
+    }
+    &__dropButtonClean {
+        width: 100%;
+        padding: 1rem;
+        color: $secondary-color;
+        font-weight: bold;
+        outline: none;
+        color: #fff;
+        background-color: rgb(252, 115, 115);
+        border-top: 1px solid $border;
+        border-bottom: 1px solid $border;
+        font-size: 1.6rem;
+        z-index: 9;
+        cursor: pointer;
+        transition: 300ms ease;
+        display: flex;
+        justify-content: center;
+        &:hover {
+            background-color: rgb(250, 87, 87);
+        }
+    }
+    &__dropButtonClean-icon {
+        font-size: 1.6rem;
+        margin-left: 1rem;
+    }
+    /* Colors Inputs */
+    &__colors {
+        width: 2.3rem;
+        height: 2.3rem;
+        border-radius: 50%;
+        margin: 0 0.5rem 0 0;
+        cursor: pointer;
+        transition: 300ms ease-in-out;
+        &:hover {
+            outline: 0.1rem solid $secondary-color;
+        }
+        &--white {
+            background-color: #f1f1f1;
+        }
+        &--black {
+            background-color: $secondary-color;
+        }
+        &--blue {
+            background-color: rgb(83, 83, 201);
+        }
+    }
+}

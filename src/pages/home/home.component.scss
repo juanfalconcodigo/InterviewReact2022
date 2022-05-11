@@ -1,0 +1,15 @@
+@import '../../sass/settings/_variables.scss';
+/////4
+.main-shop-home {
+    width: 55%;
+    position: relative;
+    padding: 2rem;
+    border-left: 1px solid $border;
+    border-right: 1px solid $border;
+    &__home {
+        display: grid;
+        grid-template-columns: repeat(3, 25%);
+        justify-content: center;
+        gap: 3rem;
+    }
+}
