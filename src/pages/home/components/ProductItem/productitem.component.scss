@@ -1,42 +1,34 @@
 @import '../../../../sass/settings/_variables.scss';
-.asideView {
-    width: 25%;
-    position: sticky;
-    height: 100vh;
-    top: 0;
-    padding: 1rem;
-    overflow-y: auto;
-}
-
-.cardView {
+// Cart Cards
+.cardCartShop {
     position: relative;
     width: 100%;
     height: auto;
+    background-color: #fff;
     border: 0.1rem solid $border;
     border-radius: 0.8rem;
     padding: 1rem;
-    transition: all 300ms ease-in-out;
+    margin: 0.5rem 0 0.9rem 0;
     h3 {
-        font-size: 1.5rem;
-        padding: 0.8rem 0 0.8rem 0;
+        font-size: 1.2rem;
     }
     &__img {
-        width: 100%;
-        height: 45rem;
+        width: 50%;
+        height: 10rem;
         border-radius: 0.8rem;
     }
     &__title {
-        font-size: 2rem;
+        font-size: 1.3rem;
         color: $secondary-color;
     }
     &__price {
-        font-size: 1.9rem;
+        font-size: 1.4rem;
         font-weight: bold;
         letter-spacing: 0.12rem;
         color: $secondary-color;
     }
     &__description {
-        font-size: 1.5rem;
+        font-size: 1.2rem;
         color: $secondary-color;
     }
     &__group-content {
@@ -48,11 +40,9 @@
     &__button {
         position: relative;
         width: 100%;
-        color: $secondary-color;
+        color: #212427;
         letter-spacing: 0.12rem;
-        margin-top: 1rem;
-        padding: 1.3rem;
-        font-size: 1.5rem;
+        font-size: 1.2rem;
         border-radius: 0.5rem;
         cursor: pointer;
         transition: all 300ms ease-in-out;
@@ -69,18 +59,19 @@
             padding-right: 0.5rem;
         }
     }
-    &__icon {
-        position: absolute;
-        font-size: 2rem;
-        left: 0.7rem;
+    &__group {
+        padding: 0.5rem 0 0.5rem 0;
     }
-    // No Data View
-    &__noData {
+    &__btnDelete {
         width: 100%;
-        height: 69vh;
-        font-size: 1.3rem;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        font-size: 1.4rem;
+        padding: 0.5rem;
+        color: #f1f1f1;
+        background-color: rgb(245, 69, 69);
+        border-radius: 0.8rem;
+        cursor: pointer;
+        &:hover {
+            background-color: rgb(172, 40, 40);
+        }
     }
 }

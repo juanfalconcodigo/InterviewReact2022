@@ -1,9 +1,26 @@
+import { useContext, useEffect, useRef } from 'react';
+import { ProductItemComponent } from '../ProductItem/productitem.component';
+import { productContext } from '../Provider/product.provider';
 import './header.component.scss';
 
 export const HeaderComponent = () => {
+    const overlayShopCart = useRef(null);
+    const shopProductCartBody = useRef(null);
+    const {shoppingCart} = useContext(productContext);
+
+    const showShopCart = () => {
+        shopProductCartBody.current.classList.toggle("hiddenShopCart");
+        overlayShopCart.current.classList.toggle("activeOverlay");
+    }
+
+    const hiddenShopCart = () => {
+        shopProductCartBody.current.classList.toggle("hiddenShopCart");
+        overlayShopCart.current.classList.remove("activeOverlay");
+    }
+
     return (
-       <>
-        <header className="header">
+        <>
+            <header className="header">
                 <div className="header__container container">
                     <a href="#">
                         <h1 className="dflex-ai-center header__heading-title">
@@ -22,23 +39,27 @@ export const HeaderComponent = () => {
                     </div>
                     <div className="header__user">
                         <i
-                            className="bx bx-shopping-bag header__user-shop"
-                            id="openShopCart"
+                            className="bx bx-shopping-bag header__user-shop" onClick={showShopCart}
                         ></i>
                         <i className="bx bx-user header__user-user"></i>
 
-                        <div className="header__shopProductCart">
-                            <div className="header__shopProductCartView" id="addShop">
+                        <div ref={shopProductCartBody} className="header__shopProductCart">
+                            <div className="header__shopProductCartView">
+                                {/* aqui se recorre */}
+                                {shoppingCart.map((e,i)=>{
+                                    return(
+                                        <ProductItemComponent key={e.id} product={e}/>
+                                    )
+                                })}
                             </div>
                         </div>
-                        <div
+                        <div ref={overlayShopCart} onClick={hiddenShopCart}
                             className="header__shopProductCart-overlay"
-                            id="closeViewCart"
                         ></div>
                     </div>
                 </div>
             </header>
-       </>
+        </>
     );
 }
 

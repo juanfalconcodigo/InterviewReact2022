@@ -1,11 +1,24 @@
+import { useContext } from 'react';
+import { productContext } from '../Provider/product.provider';
 import './product.component.scss';
 
-export const ProductComponent = ({product:{mark,model,price,valuecolor,serie,size,description,thunbd}}) => {
+export const ProductComponent = ({ product: { mark, model, price, valuecolor, serie, size, description, thunbd, id } }) => {
+    const { setProduct, setShoppingCart } = useContext(productContext);
+    const setInfoProduct = (product) => {
+        console.log('[PRODUCT]', product);
+        setProduct(() => product);
+    }
+
+    const addShoppingCart = (product) => {
+        console.log('[PRODUCT CART]', product);
+        setShoppingCart((state) => [...state, { ...product,count:1 }]);
+    }
+
     return (
         <>
 
             <div className="card">
-                <div  className="card__color"></div>
+                <div className="card__color"></div>
                 <h3 className="card__title">${mark}</h3>
                 <p className="card__model card__modelx"> {model} </p>
                 <img className="card__img" src={thunbd} />
@@ -20,8 +33,8 @@ export const ProductComponent = ({product:{mark,model,price,valuecolor,serie,siz
                 <p className="card__description"> {description} </p>
 
 
-                <button className="card__button addView">View</button>
-                <button className="card__button addShop">
+                <button className="card__button addView" onClick={() => setInfoProduct({ mark, model, price, valuecolor, serie, size, description, thunbd, id })}>View</button>
+                <button className="card__button addShop" onClick={() => addShoppingCart({ mark, model, price, valuecolor, serie, size, description, thunbd, id })}>
                     Add Cart
                 </button>
             </div>
