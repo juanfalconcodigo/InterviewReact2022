@@ -1,8 +1,8 @@
-import { HeaderComponent } from './components/Header/header.component';
+import { HeaderComponent } from '../../shared/component/header/header.component';
 import { InfoproductComponent } from './components/InfoProduct/infoproduct.component';
 import { NavbarComponent } from './components/Navbar/navbar.component';
 import { ProductComponent } from './components/Product/product.component';
-import { ProductProvider } from './components/Provider/product.provider';
+import { ProductProvider } from '../../provider/product.provider';
 import './home.component.scss';
 const products =
   [
@@ -68,8 +68,6 @@ const HomeComponent = () => {
 
   return (
     <>
-      <ProductProvider>
-        <HeaderComponent />
         <div style={{ display: 'flex' }}>
           <NavbarComponent />
           <main className="main-shop-home">
@@ -82,9 +80,7 @@ const HomeComponent = () => {
             </section>
           </main>
           <InfoproductComponent />
-
         </div>
-      </ProductProvider>
     </>
   );
 }

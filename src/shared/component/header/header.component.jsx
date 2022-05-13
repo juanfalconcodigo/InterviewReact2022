@@ -1,12 +1,14 @@
 import { useContext, useEffect, useRef } from 'react';
-import { ProductItemComponent } from '../ProductItem/productitem.component';
-import { productContext } from '../Provider/product.provider';
+import { ProductItemComponent } from '../product-item/product-item.component';
+import { productContext } from '../../../provider/product.provider';
 import './header.component.scss';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 export const HeaderComponent = () => {
     const overlayShopCart = useRef(null);
     const shopProductCartBody = useRef(null);
-    const {shoppingCart} = useContext(productContext);
+    const { shoppingCart } = useContext(productContext);
+    const navigate=useNavigate();
 
     const showShopCart = () => {
         shopProductCartBody.current.classList.toggle("hiddenShopCart");
@@ -18,16 +20,21 @@ export const HeaderComponent = () => {
         overlayShopCart.current.classList.remove("activeOverlay");
     }
 
+    const redirectRoute=(to)=>{
+        navigate(to);
+    }
+
     return (
         <>
             <header className="header">
                 <div className="header__container container">
-                    <a href="#">
+                    <div>
                         <h1 className="dflex-ai-center header__heading-title">
                             <i className="bx bx-run header__heading-title-icon"></i>
-                            <span>Shoes</span>
+                            <span><NavLink to="/" style={{color:'black'}}>Shoes</NavLink></span>
+                            {/* <span><NavLink to="/" className={({isActive})=>isActive?'is-active-route':''}>Shoes</NavLink></span> */}
                         </h1>
-                    </a>
+                    </div>
                     <div className="header__search">
                         <i className="bx bx-search-alt header__search-icon"></i>
                         <input
@@ -46,12 +53,16 @@ export const HeaderComponent = () => {
                         <div ref={shopProductCartBody} className="header__shopProductCart">
                             <div className="header__shopProductCartView">
                                 {/* aqui se recorre */}
-                                {shoppingCart.map((e,i)=>{
-                                    return(
-                                        <ProductItemComponent key={e.id} product={e}/>
+                                {shoppingCart.map((e, i) => {
+                                    return (
+                                        <ProductItemComponent key={e.id} product={e} />
                                     )
                                 })}
+                                <div style={{display:'flex',justifyContent:'center',alignItems:'center',marginTop:'25px'}}>
+                                    <button className='cardCartShop__btnDelete' onClick={()=>redirectRoute('basket')}>Ver bolsa de compras</button>
+                                </div>
                             </div>
+
                         </div>
                         <div ref={overlayShopCart} onClick={hiddenShopCart}
                             className="header__shopProductCart-overlay"
