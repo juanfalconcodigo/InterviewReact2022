@@ -1,9 +1,9 @@
 import { useContext } from 'react';
-import { productContext } from '../Provider/product.provider';
+import { productContext } from '../../../../provider/product.provider';
 import './product.component.scss';
 
 export const ProductComponent = ({ product: { mark, model, price, valuecolor, serie, size, description, thunbd, id } }) => {
-    const { setProduct, setShoppingCart } = useContext(productContext);
+    const { setProduct, setShoppingCart, shoppingCart } = useContext(productContext);
     const setInfoProduct = (product) => {
         console.log('[PRODUCT]', product);
         setProduct(() => product);
@@ -11,7 +11,17 @@ export const ProductComponent = ({ product: { mark, model, price, valuecolor, se
 
     const addShoppingCart = (product) => {
         console.log('[PRODUCT CART]', product);
-        setShoppingCart((state) => [...state, { ...product,count:1 }]);
+        const isExists = shoppingCart.some((e, i) => e.id === product.id);
+        if (isExists) {
+            let newProducts = shoppingCart;
+            const idProductExists = shoppingCart.findIndex((e, i) => e.id === product.id);
+            newProducts[idProductExists].count += 1
+            newProducts[idProductExists].price += product.price
+            console.log('[NEW PRODUCTS]',shoppingCart,newProducts,idProductExists)
+            setShoppingCart((state) => [...newProducts]);
+        } else {
+            setShoppingCart((state) => [...state, { ...product, count: 1 }]);
+        }
     }
 
     return (

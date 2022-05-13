@@ -1,8 +1,6 @@
-import { HeaderComponent } from './components/Header/header.component';
 import { InfoproductComponent } from './components/InfoProduct/infoproduct.component';
 import { NavbarComponent } from './components/Navbar/navbar.component';
 import { ProductComponent } from './components/Product/product.component';
-import { ProductProvider } from './components/Provider/product.provider';
 import './home.component.scss';
 const products =
   [
@@ -64,29 +62,23 @@ const products =
     }
   ];
 
-const HomeComponent = () => {
+export default function HomeComponent() {
 
   return (
     <>
-      <ProductProvider>
-        <HeaderComponent />
-        <div style={{ display: 'flex' }}>
-          <NavbarComponent />
-          <main className="main-shop-home">
-            <section className="main-shop-home__home">
-              {products.map((product, i) => {
-                return (
-                  <ProductComponent key={i} product={product} />
-                )
-              })}
-            </section>
-          </main>
-          <InfoproductComponent />
-
-        </div>
-      </ProductProvider>
+      <div style={{ display: 'flex' }}>
+        <NavbarComponent />
+        <main className="main-shop-home">
+          <section className="main-shop-home__home">
+            {products.map((product, i) => {
+              return (
+                <ProductComponent key={i} product={product} />
+              )
+            })}
+          </section>
+        </main>
+        <InfoproductComponent />
+      </div>
     </>
   );
 }
-
-export default HomeComponent;

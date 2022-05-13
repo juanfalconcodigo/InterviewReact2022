@@ -1,6 +1,13 @@
+import { useContext } from 'react';
+import { productContext } from '../../../provider/product.provider';
 import './productitem.component.scss';
 
-export const ProductItemComponent = ({product:{ mark, model, price, valuecolor, serie, size, description, thunbd ,count}}) => {
+export const ProductItemComponent = ({product:{ mark, model, price, valuecolor, serie, size, description, thunbd ,count,id}}) => {
+    const {shoppingCart,setShoppingCart} = useContext(productContext);
+    const deleteProduct=(id)=>{
+        const newProducts=shoppingCart.filter((e,i)=>e.id!==id);
+        setShoppingCart((state)=>[...newProducts]);
+    }
     return (
         <>
             <div className="cardCartShop">
@@ -20,7 +27,7 @@ export const ProductItemComponent = ({product:{ mark, model, price, valuecolor, 
                                 <p className="cardCartShop__price">${price}</p>
                                 <p className="cardCartShop__price"> {count} </p>
                             </div>
-                            <button className="cardCartShop__btnDelete" >Remove</button>
+                            <button className="cardCartShop__btnDelete" onClick={()=>deleteProduct(id)}>Remove</button>
                         </div>
                     </div>
                 </div>
