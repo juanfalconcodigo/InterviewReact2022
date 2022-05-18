@@ -8,7 +8,7 @@ export const HeaderComponent = () => {
     const overlayShopCart = useRef(null);
     const shopProductCartBody = useRef(null);
     const { shoppingCart } = useContext(productContext);
-    const navigate=useNavigate();
+    const navigate = useNavigate();
 
     const showShopCart = () => {
         shopProductCartBody.current.classList.toggle("hiddenShopCart");
@@ -20,7 +20,7 @@ export const HeaderComponent = () => {
         overlayShopCart.current.classList.remove("activeOverlay");
     }
 
-    const redirectRoute=(to)=>{
+    const redirectRoute = (to) => {
         navigate(to);
     }
 
@@ -31,7 +31,7 @@ export const HeaderComponent = () => {
                     <div>
                         <h1 className="dflex-ai-center header__heading-title">
                             <i className="bx bx-run header__heading-title-icon"></i>
-                            <span><NavLink to="/" style={{color:'black'}}>Shoes</NavLink></span>
+                            <span><NavLink to="/" style={{ color: 'black' }}>Shoes</NavLink></span>
                             {/* <span><NavLink to="/" className={({isActive})=>isActive?'is-active-route':''}>Shoes</NavLink></span> */}
                         </h1>
                     </div>
@@ -48,7 +48,7 @@ export const HeaderComponent = () => {
                         <i
                             className="bx bx-shopping-bag header__user-shop" onClick={showShopCart}
                         ></i>
-                        <i className="bx bx-user header__user-user"></i>
+                        <i className="bx bx-user header__user-user" onClick={() => redirectRoute('user')}></i>
 
                         <div ref={shopProductCartBody} className="header__shopProductCart">
                             <div className="header__shopProductCartView">
@@ -58,8 +58,8 @@ export const HeaderComponent = () => {
                                         <ProductItemComponent key={e.id} product={e} />
                                     )
                                 })}
-                                <div style={{display:'flex',justifyContent:'center',alignItems:'center',marginTop:'25px'}}>
-                                    <button className='cardCartShop__btnDelete' onClick={()=>redirectRoute('basket')}>Ver bolsa de compras</button>
+                                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '25px' }}>
+                                    <button className='cardCartShop__btnDelete' onClick={() => redirectRoute('basket')}>Ver bolsa de compras</button>
                                 </div>
                             </div>
 
