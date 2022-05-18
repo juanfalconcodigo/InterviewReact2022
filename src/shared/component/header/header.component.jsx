@@ -48,7 +48,7 @@ export const HeaderComponent = () => {
                         <i
                             className="bx bx-shopping-bag header__user-shop" onClick={showShopCart}
                         ></i>
-                        <i className="bx bx-user header__user-user"></i>
+                        <i className="bx bx-user header__user-user" onClick={()=>redirectRoute('user')}></i>
 
                         <div ref={shopProductCartBody} className="header__shopProductCart">
                             <div className="header__shopProductCartView">
