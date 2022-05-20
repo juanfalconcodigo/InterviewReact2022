@@ -1,4 +1,4 @@
-@import '../../../sass/settings/_variables.scss';
+@import "../../../sass/settings/_variables.scss";
 .header {
     border-bottom: 0.1rem solid #f2f2f2;
     &__container {
@@ -63,7 +63,7 @@
         height: 0;
         padding: 0;
         top: 7rem;
-        right: 25.5rem;
+        right: 25.1rem;
         opacity: 0;
         &.hiddenShopCart {
             border-radius: 0.8rem;
@@ -117,7 +117,7 @@
         height: 0;
         padding: 0;
         top: 7rem;
-        right: 25.5rem;
+        right: 16.1rem;
         opacity: 0;
         &.hiddenShopCart {
             border-radius: 0.8rem;
@@ -161,5 +161,81 @@
             top: 0;
             z-index: 3;
         }
+    }
+    /* User Content */
+    &__user-wrap {
+        position: absolute;
+        width: 270px;
+        transition: 300ms ease-in-out;
+        overflow: hidden;
+        height: 0;
+        padding: 0;
+        top: 7rem;
+        right: 22rem;
+        opacity: 0;
+        &.showUser {
+            border-radius: 0.8rem;
+            overflow: visible;
+            opacity: 1;
+            transition: 300ms ease-in-out;
+            z-index: 5;
+        }
+    }
+    &__user-content {
+        position: relative;
+        padding: 2rem;
+        background-color: #fafafa;
+        border-radius: 0.8rem;
+        box-shadow: -0.2rem 0.6rem 1.4rem -0.5rem rgb(0 0 0 / 20%);
+        z-index: -1;
+        &::after {
+            position: absolute;
+            content: "";
+            width: 0;
+            height: 0;
+            border-width: 0 15px 15px 15px;
+            border-color: transparent transparent #fafafa transparent;
+            border-style: solid;
+            top: 0;
+            transform: translateY(-1.5rem);
+            right: 8.5rem;
+        }
+    }
+    &__user-overlay {
+        opacity: 0;
+        transition: 300ms ease-in-out;
+        &.userOverlay {
+            position: fixed;
+            opacity: 1;
+            width: 100%;
+            height: 100vh;
+            background-color: none;
+            transition: 300ms ease-in-out;
+            left: 0;
+            top: 0;
+            z-index: 3;
+        }
+    }
+    /* Login */
+    &__user-option {
+        width: 100%;
+        border-radius: 0.5rem;
+        padding: 0.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 0.8rem;
+        transition: all 150ms ease-in-out;
+        cursor: pointer;
+    }
+    &__user-option {
+        &:hover {
+            background-color: #3b2222;
+            color: #fff;
+        }
+    }
+    &__user-option-title {
+        font-size: 1.7rem;
+        padding-left: 0.5rem;
     }
 }

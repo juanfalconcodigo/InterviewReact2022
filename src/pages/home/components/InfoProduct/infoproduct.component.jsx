@@ -1,10 +1,10 @@
 import { useContext } from 'react';
-import { productContext } from '../../../../provider/product.provider';
+import { rootContext } from '../../../../provider/root.provider';
 import './infoproduct.component.scss';
 
 
 export const InfoproductComponent = () => {
-    const { productSelected: product } = useContext(productContext);
+    const { productSelected: product } = useContext(rootContext);
     return (
         <>
             <aside className="asideView">

@@ -1,9 +1,9 @@
 import { useContext } from 'react';
-import { productContext } from '../../../provider/product.provider';
+import { rootContext } from '../../../provider/root.provider';
 import './product-item.component.scss';
 
 export const ProductItemComponent = ({ product: { mark, model, price, valuecolor, serie, size, description, thunbd, count, id } }) => {
-    const {shoppingCart,setShoppingCart} = useContext(productContext);
+    const {shoppingCart,setShoppingCart} = useContext(rootContext);
     const deleteItemCardProduct = (id) => {
         const newProductsCard=shoppingCart.filter((e,i)=>e.id!==id);
         setShoppingCart((state)=>[...newProductsCard]);
