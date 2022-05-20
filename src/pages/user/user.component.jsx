@@ -1,6 +1,4 @@
-import { NavLink, Outlet, Route, Routes } from 'react-router-dom';
-import ProfileComponent from './profile/profile.component';
-import WishlistComponent from './wish-list/wish-list.component';
+import { NavLink, Outlet } from 'react-router-dom';
 import './user.component.scss';
 
 const UserComponent = () => {
@@ -12,6 +10,9 @@ const UserComponent = () => {
             </div>
             <div>
                 <NavLink to='wishlist'>Lista de deseos</NavLink>
+            </div>
+            <div>
+                <NavLink to='/login'>Login</NavLink>
             </div>
             <Outlet/>
         </>

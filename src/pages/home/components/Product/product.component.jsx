@@ -1,9 +1,9 @@
 import { useContext } from 'react';
-import { productContext } from '../../../../provider/product.provider';
+import { rootContext } from '../../../../provider/root.provider';
 import './product.component.scss';
 
 export const ProductComponent = ({ product: { mark, model, price, valuecolor, serie, size, description, thunbd, id } }) => {
-    const { setProduct, setShoppingCart, shoppingCart } = useContext(productContext);
+    const { setProduct, setShoppingCart, shoppingCart } = useContext(rootContext);
     const setInfoProduct = (product) => {
         console.log('[PRODUCT]', product);
         setProduct(() => product);

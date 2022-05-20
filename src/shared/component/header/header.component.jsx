@@ -1,13 +1,13 @@
-import { useContext, useEffect, useRef } from 'react';
+import { useContext, useRef } from 'react';
 import { ProductItemComponent } from '../product-item/product-item.component';
-import { productContext } from '../../../provider/product.provider';
+import { rootContext } from '../../../provider/root.provider';
 import './header.component.scss';
 import { NavLink, useNavigate } from 'react-router-dom';
 
 export const HeaderComponent = () => {
     const overlayShopCart = useRef(null);
     const shopProductCartBody = useRef(null);
-    const { shoppingCart } = useContext(productContext);
+    const { shoppingCart } = useContext(rootContext);
     const navigate=useNavigate();
 
     const showShopCart = () => {
