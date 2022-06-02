@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import { rootContext } from '../../../../provider/root.provider';
 import './product.component.scss';
 
-export const ProductComponent = ({ product: { mark, model, price, valuecolor, serie, size, description, thunbd, id } }) => {
+export const ProductComponent = ({ product: { brand, model, price, serie, size, description, photo, idProduct } }) => {
     const { setProduct, setShoppingCart, shoppingCart } = useContext(rootContext);
     const setInfoProduct = (product) => {
         console.log('[PRODUCT]', product);
@@ -11,9 +11,9 @@ export const ProductComponent = ({ product: { mark, model, price, valuecolor, se
 
     const addShoppingCart = (product) => {
         console.log('[PRODUCT CART]', product);
-        const isExists = shoppingCart.some((e, i) => e.id === product.id);
+        const isExists = shoppingCart.some((e, i) => e.idProduct === product.idProduct);
         if (isExists) {
-            const findProductId = shoppingCart.findIndex((e) => e.id === product.id);
+            const findProductId = shoppingCart.findIndex((e) => e.idProduct === product.idProduct);
             const newProducts = shoppingCart;
             newProducts[findProductId].count += 1;
             newProducts[findProductId].price += product.price;
@@ -28,12 +28,11 @@ export const ProductComponent = ({ product: { mark, model, price, valuecolor, se
 
             <div className="card">
                 <div className="card__color"></div>
-                <h3 className="card__title">${mark}</h3>
+                <h3 className="card__title">{brand}</h3>
                 <p className="card__model card__modelx"> {model} </p>
-                <img className="card__img" src={thunbd} />
+                <img className="card__img" src={photo} />
                 <div className="dflex-ai-center-jc-btw">
-                    <p className="card__model card__price">Price: ${price} </p>
-                    <p className="card__valueColor">{valuecolor} </p>
+                    <p className="card__model card__price">Price: S/ {price} un </p>
                 </div>
                 <div className="dflex-ai-center-jc-btw">
                     <p className="card__model card__serie"> {serie} </p>
@@ -42,8 +41,8 @@ export const ProductComponent = ({ product: { mark, model, price, valuecolor, se
                 <p className="card__description"> {description} </p>
 
 
-                <button className="card__button addView" onClick={() => setInfoProduct({ mark, model, price, valuecolor, serie, size, description, thunbd, id })}>View</button>
-                <button className="card__button addShop" onClick={() => addShoppingCart({ mark, model, price, valuecolor, serie, size, description, thunbd, id })}>
+                <button className="card__button addView" onClick={() => setInfoProduct({ brand, model, price, serie, size, description, photo, idProduct })}>View</button>
+                <button className="card__button addShop" onClick={() => addShoppingCart({ brand, model, price, serie, size, description, photo, idProduct })}>
                     Add Cart
                 </button>
             </div>

@@ -9,8 +9,8 @@ export const InfoproductComponent = () => {
         <>
             <aside className="asideView">
 
-                {product.hasOwnProperty('thunbd') && (<div className="cardView">
-                    <img className="cardView__img" src={product.thunbd} />
+                {product.hasOwnProperty('photo') && (<div className="cardView">
+                    <img className="cardView__img" src={product.photo} />
                     <div className="cardView__group-content  text-center">
                         <h2 className="cardView__title"> {product.title}</h2>
                         <h3> {product.model} </h3>

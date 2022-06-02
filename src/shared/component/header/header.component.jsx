@@ -1,4 +1,4 @@
-import { useContext, useEffect, useRef } from 'react';
+import { useContext, useRef } from 'react';
 import { ProductItemComponent } from '../product-item/product-item.component';
 import { rootContext } from '../../../provider/root.provider';
 import './header.component.scss';
@@ -37,6 +37,7 @@ export const HeaderComponent = () => {
 
     const logout = () => {
         setUserInfo((state) => ({ data: null, isAuthenticate: false }));
+        localStorage.removeItem('TOKEN')
         redirectRoute('/');
     }
 
@@ -95,7 +96,7 @@ export const HeaderComponent = () => {
                                 {/* aqui se recorre */}
                                 {shoppingCart.map((e, i) => {
                                     return (
-                                        <ProductItemComponent key={e.id} product={e} />
+                                        <ProductItemComponent key={e.idProduct} product={e} />
                                     )
                                 })}
                                 <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '25px' }}>
